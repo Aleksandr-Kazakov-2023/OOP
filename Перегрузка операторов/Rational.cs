@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,6 +40,23 @@ namespace Перегрузка_операторов
         public static Rational operator +(Rational left, Rational right)
         {
             return new Rational(left.a * right.b + right.a * left.b, left.b * right.b);
+        }
+        public static Rational operator -(Rational left, Rational right)
+        {
+            return new Rational(left.a * right.b - right.a * left.b, left.b * right.b);
+        }
+        public static Rational operator *(Rational left, Rational right)
+        {
+            return new Rational(left.a * right.a, left.b * right.b);
+        }
+        public static Rational operator /(Rational left, Rational right)
+        {
+            return new Rational(left.a * right.b, left.b * right.a);
+        }
+        public static Rational operator ++(Rational r)
+        {
+            r.a = r.a + r.b;
+            return r;
         }
 
         public override string ToString()
